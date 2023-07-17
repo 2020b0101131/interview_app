@@ -19,7 +19,7 @@ app.use('/', Routes);
 ///////////////////////////////////
 
 //////////////////////////////////
-const Port = 8002;
+const Port = process.env.PORT;
 app.listen(Port, () => {
     console.log(`Server is running on port ${Port}`);
 })
