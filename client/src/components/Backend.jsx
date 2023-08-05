@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 const Backend = () => {
   return (
-    <div className="container ">
+    <div className="container   ">
        <h1 >Common Backend Interview Questions and Answers</h1>
       <div class="card mt-5 w-50">
         <div class="card-body">

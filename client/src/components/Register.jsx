@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { registerUser } from "../service/Api.jsx";
 
 const Register = () => {
     const [email,setEmail]=useState();
     const [password,setPassword]=useState();
     const [cpassword,setCpassword]=useState();
-
+    const [username,setUsername]=useState();
+    const navigate=useNavigate();
     const handleSubmit=async(e)=>{
         e.preventDefault();
         try{
-          console.log(email,password);
-          await registerUser({email,password});
+
+         const response= await registerUser({username,email,password});
+         console.log("saransh_response::",response.data);
+          alert("Registered Successfully");
+          navigate('/userprofile',{state:response.data});
         }catch(error){
           console.log("Error while handleSubmit",error);
         }
@@ -68,7 +72,13 @@ const Register = () => {
             >
                 {/* ////////////////////////////////////////////////////////////////// */}
               <form>
-                
+                {/* UserName */}
+                <div className="form-outline mb-1">
+                  <input type="email" id="loginName" className="form-control" value={username} onChange={(e)=>setUsername(e.target.value)} />
+                  <label className="form-label" htmlFor="loginName">
+                     Username
+                  </label>
+                </div>
 
                 {/* Email input */}
                 <div className="form-outline mb-1">

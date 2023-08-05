@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import autoIncrement from 'mongoose-auto-increment';
 const registerSchema = mongoose.Schema({
+    username: String,
     email: String,
     password: String,
 })

@@ -1,14 +1,24 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { userProfile } from '../service/Api';
+import { useLocation } from 'react-router-dom';
+// import { userProfile } from '../service/Api';
 
 const UserProfile = () => {
+  const location=useLocation();
+
+  if(location.state!==null){
+    var email_data=location.state.email;
+    var username=location.state.username;
+  }
+  
+  
+ 
   useEffect(()=>{
 handleGetProfile();
   },[]);
   const handleGetProfile=()=>{
-    const response=userProfile();
-    console.log(response);
+    
+    
   }
   return (
    
@@ -22,8 +32,8 @@ handleGetProfile();
             <div className="mt-3 mb-4">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp" className="rounded-circle img-fluid" style={{width: 100}} />
             </div>
-            <h4 className="mb-2">Julie L. Arsenault</h4>
-            <p className="text-muted mb-4">@Programmer <span className="mx-2">|</span> <a href="#!">mdbootstrap.com</a></p>
+            <h4 className="mb-2">{username}</h4>
+            <p className="text-muted mb-4">@Programmer <span className="mx-2">|</span> <a href="#!">{email_data}</a></p>
             <div className="mb-4 pb-2">
               <button type="button" className="btn btn-outline-primary btn-floating">
                 <i className="fab fa-facebook-f fa-lg" />
